@@ -1,6 +1,19 @@
  <%@ page contentType="text/html; charset=UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
+
+     
+<!-- Validación de la sesión -->
+
+<% 
+    String us = (String) session.getAttribute("usuario");
+    
+    if(us == null){
+       response.sendRedirect("error.jsp");
+    }
+%>
+    
+
+ <!DOCTYPE html>
+<html lang="en">    
 
 <head>
 

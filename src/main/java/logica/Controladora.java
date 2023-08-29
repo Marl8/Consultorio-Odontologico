@@ -74,5 +74,22 @@ public class Controladora {
         controlPersis.editarPaciente(pacien);
     }
 
+    public boolean comprobarIngreso(String username, String password) {
+        
+        boolean ingresoValidado = false;
+        List<Usuario> listaUsuarios = controlPersis.getUsuarios();
+        
+        for(Usuario us : listaUsuarios){
+        
+            if(us.getNombreUsuario().equals(username)){
+                if(us.getPassword().equals(password)){
+                    
+                    ingresoValidado = true;
+                }
+            }
+        }
+        return ingresoValidado;
+    }
+
     
 }
