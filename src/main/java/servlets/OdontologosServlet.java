@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.Controladora;
+import logica.Horario;
 import logica.Odontologo;
+import logica.Usuario;
 
 
 @WebServlet(name = "OdontologosServlet", urlPatterns = {"/odontologos"})
@@ -27,15 +29,6 @@ public class OdontologosServlet extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -50,14 +43,6 @@ public class OdontologosServlet extends HttpServlet {
         response.sendRedirect("verOdontologos.jsp");
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -67,23 +52,17 @@ public class OdontologosServlet extends HttpServlet {
         String dni = request.getParameter("dni");
         String telefono =request.getParameter("telefono");
         String direccion = request.getParameter("direccion");
+        int idhorario = Integer.parseInt(request.getParameter("idHorario"));
         String especialidad = request.getParameter("especialidad");
         
         
-        // Convertir fecha de Date.util a Date.sql
-        Date fechaNac = new Date();
+        Date fechaNac = convertirFecha(request);
         
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-          java.sql.Date fechaConvertida = null;
+        Horario horario = new Horario();
+        horario = controladora.traerHorario(idhorario);
         
-          try {
-            fechaNac = formato.parse(request.getParameter("fecha_nac"));
-            fechaConvertida = new java.sql.Date(fechaNac.getTime());
-        } catch (ParseException ex) {
-              System.out.println("Error al parsear la fecha de salida: " + ex.getMessage());
-        }
-
-        System.out.println(fechaConvertida);
+        HttpSession sesion = request.getSession();
+        Usuario usuario = (Usuario)sesion.getAttribute("usuario");
         
         Odontologo odon = new Odontologo();
         odon.setNombre(nombre);
@@ -92,11 +71,28 @@ public class OdontologosServlet extends HttpServlet {
         odon.setTelefono(telefono);
         odon.setDireccion(direccion);
         odon.setEspecialidad(especialidad);
+        odon.setHorario(horario);
+        odon.setUsuario(usuario);
         odon.setFecha_nac(fechaNac);
         
         controladora.crearOdontologo(odon);
         
-        response.sendRedirect("altaOdontologos.jsp");
+        response.sendRedirect("registroExitoso.jsp");
+    }
+
+    private Date convertirFecha(HttpServletRequest request) {
+        // Convertir fecha de Date.util a Date.sql
+        Date fechaNac = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        java.sql.Date fechaConvertida = null;
+        try {
+            fechaNac = formato.parse(request.getParameter("fecha_nac"));
+            fechaConvertida = new java.sql.Date(fechaNac.getTime());
+        } catch (ParseException ex) {
+            System.out.println("Error al parsear la fecha de salida: " + ex.getMessage());
+        }
+        System.out.println("Fecha Convertida: " + fechaConvertida);
+        return fechaNac;
     }
 
     /**

@@ -1,3 +1,4 @@
+<%@page import="logica.Horario"%>
 <%@include file="/views/components/head.jsp"%>
 
 <%@include file="/views/components/barraLateral.jsp"%>
@@ -41,27 +42,76 @@
                     <input type="date" class="form-control form-control-user mb-3" id="fechaNac"
                            name="fecha_nac" placeholder="Fecha de nacimiento" checked="">
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-6">
                     <input type="text" class="form-control form-control-user mb-3" id="especialidad"
                            name="especialidad" placeholder="Especialidad" checked="">
                 </div>
+                
+                <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user mb-3" id="idHorario"
+                           name="idHorario" placeholder="Id. Horario" checked="">
+                </div>
+                <hr>
+                <div class="col-sm-6 text-center mt-3">
+                    <button type="button" class="btn btn-primary w-75 mb-2" data-toggle="modal" data-target="#exampleModalCenter">
+                        Registrar Horario
+                    </button>
+                </div>    
+                <div class="col-sm-6 text-center mt-3">
+                    <a href="horarios" class="btn btn-primary w-75 mb-2">
+                        Lista Horarios
+                    </a>
+                </div>
             </div>
-
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-user btn-block">
+            <hr>
+            <button type="submit" class="btn btn-primary btn-user btn-block mt-4">
                 Registrar odontólogo
             </button>
-        </form>
-        <hr>
-        <div class="text-center">
-            <a class="small" href="forgot-password.html">Forgot Password?</a>
-        </div>
-        <div class="text-center">
-            <a class="small" href="login.html">Already have an account? Login!</a>
+            </form>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Registrar Horario</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="horarios" method="POST">
+                                <div class="modal-body">
+                                    <div class="form-group mb-4">
+                                        <label for="horarioIngreso">Horario de Ingreso</label>
+                                        <input type="text" class="form-control" name="horarioIngreso" required=""> 
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="horarioSalida">Horario de Salida</label>
+                                        <input type="text" class="form-control" name="horarioSalida" required=""> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>    
+            <hr>
+            <div class="text-center">
+                <a class="small" href="forgot-password.html">Forgot Password?</a>
+            </div>
+            <div class="text-center">
+                <a class="small" href="login.html">Already have an account? Login!</a>
+            </div>
         </div>
     </div>
 </div>
-</div>
 
 <%@include file="/views/components/footer.jsp"%>
+
+
+
+

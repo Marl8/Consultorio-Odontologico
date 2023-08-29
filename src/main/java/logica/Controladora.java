@@ -90,6 +90,37 @@ public class Controladora {
         }
         return ingresoValidado;
     }
+    
+    public Usuario usuarioLogueado(String username){
+    
+        Usuario usuario = new Usuario();
+        List<Usuario> listaUsuarios = controlPersis.getUsuarios();
+        
+        for(Usuario us : listaUsuarios){
+        
+            if(us.getNombreUsuario().equals(username)){
+                usuario = us;
+            }
+        }    
+        return usuario;
+    }
 
+    
+    public void guardarHorario(String horarioIngreso, String horarioSalida) {
+        
+        Horario horario = new Horario();
+        horario.setHorario_inicio(horarioIngreso);
+        horario.setHorario_salida(horarioSalida);
+        
+        controlPersis.guardarHorario(horario);
+    }
+
+    public List<Horario> getHorarios() {
+        return controlPersis.getHorario();
+    }
+
+    public Horario traerHorario(int idhorario) {
+        return controlPersis.traerHorario(idhorario);
+    }
     
 }

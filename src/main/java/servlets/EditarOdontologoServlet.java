@@ -53,8 +53,11 @@ public class EditarOdontologoServlet extends HttpServlet {
         String telefono = request.getParameter("telefono");
         String direccion = request.getParameter("direccion");
         String especialidad = request.getParameter("especialidad");
+        String username = request.getParameter("username");
+        String idHorario = request.getParameter("idHorario");
         
         Odontologo odon = (Odontologo) request.getSession().getAttribute("editarOdontologo");
+        
         odon.setNombre(nombre);
         odon.setApellido(apellido);
         odon.setDni(dni);

@@ -44,7 +44,14 @@
                     <input type="text" class="form-control form-control-user mb-4" id="especialidad"
                            name="especialidad" placeholder="Especialidad" value="<%= odon.getEspecialidad()%>" checked="">
                 </div>
-
+                <div class="col-sm-12">
+                    <input type="text" class="form-control form-control-user mb-4" id="especialidad"
+                           name="username" placeholder="Username" value="<%= odon.getUsuario().getNombreUsuario() %>" disabled checked="">
+                </div>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control form-control-user mb-4" id="especialidad"
+                           name="horario" placeholder="Id Horario" value="<%= odon.getHorario().getId_horario() %>" disabled checked="">
+                </div>
             </div>
         
             <div class="container">

@@ -4,7 +4,7 @@
 <!-- Validación de la sesión -->
 
 <% 
-    String us = (String) session.getAttribute("usuario");
+    String us = (String) session.getAttribute("username");
     
     if(us == null){
        response.sendRedirect("error.jsp");
@@ -23,7 +23,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Consultorio Odontologico</title>
+    <title>Consultorio Odontológico</title>
     <link rel="shortcut icon" href="imagenes/icono-dental.jpg" type="image/x-icon">
 
      <!-- Custom fonts for this template -->

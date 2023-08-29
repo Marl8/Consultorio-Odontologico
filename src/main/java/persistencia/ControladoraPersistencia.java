@@ -4,6 +4,7 @@ package persistencia;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import logica.Horario;
 import logica.Odontologo;
 import logica.Paciente;
 import logica.Usuario;
@@ -104,6 +105,19 @@ public class ControladoraPersistencia {
         } catch (Exception ex) {
             System.out.println("Error al editar paciente " + ex.getMessage());
         }
+    }
+
+    public void guardarHorario(Horario horario) {
+               
+        horarioJPA.create(horario);        
+    }
+
+    public List<Horario> getHorario() {
+        return horarioJPA.findHorarioEntities();
+    }
+
+    public Horario traerHorario(int idhorario) {
+        return horarioJPA.findHorario(idhorario);
     }
     
 }
