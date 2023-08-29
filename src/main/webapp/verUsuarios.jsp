@@ -41,11 +41,11 @@
                     <% List<Usuario> lista = (List) request.getSession().getAttribute("listaUsuarios");%> 
                     
                     <tbody>
-                        <%for (Usuario us : lista){ %>
+                        <%for (Usuario usu : lista){ %>
                         <tr>
-                            <td id= "ide_us <%= us.getId_usuario()%>"><%= us.getId_usuario()%></td>
-                            <td><%= us.getNombreUsuario() %></td>
-                            <td><%= us.getRol()%></td>
+                            <td id= "ide_us <%= usu.getId_usuario()%>"><%= usu.getId_usuario()%></td>
+                            <td><%= usu.getNombreUsuario() %></td>
+                            <td><%= usu.getRol()%></td>
                             <td style=" display: flex;">
                                 <div class="me-5">
                                 <form name="eliminar" action="eliminarUsuario" method="POST" style="margin-right: 1rem">
@@ -55,7 +55,7 @@
                                         <span>Eliminar</span>
                                         </span>
                                     </button>
-                                    <input type="hidden" name="id" value="<%= us.getId_usuario() %>">
+                                    <input type="hidden" name="id" value="<%= usu.getId_usuario() %>">
                                 </form>
                                 </div>
                                 <form name="editar" action="editarUsuario" method="GET">
@@ -65,7 +65,7 @@
                                         <span>Editar</span>
                                         </span>
                                     </button>
-                                    <input type="hidden" name="id" value="<%= us.getId_usuario() %>">
+                                    <input type="hidden" name="id" value="<%= usu.getId_usuario() %>">
                                 </form>
                             </td>
                         </tr>

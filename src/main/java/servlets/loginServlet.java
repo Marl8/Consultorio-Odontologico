@@ -24,7 +24,13 @@ public class loginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        HttpSession sesion = request.getSession();
+        
+        // Elimina la sesión
+        sesion.invalidate();
+                
+        response.sendRedirect("login.jsp");
     }
 
  
