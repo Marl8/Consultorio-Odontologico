@@ -53,6 +53,7 @@ public class OdontologosServlet extends HttpServlet {
         String telefono =request.getParameter("telefono");
         String direccion = request.getParameter("direccion");
         int idhorario = Integer.parseInt(request.getParameter("idHorario"));
+        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
         String especialidad = request.getParameter("especialidad");
         
         
@@ -61,8 +62,8 @@ public class OdontologosServlet extends HttpServlet {
         Horario horario = new Horario();
         horario = controladora.traerHorario(idhorario);
         
-        HttpSession sesion = request.getSession();
-        Usuario usuario = (Usuario)sesion.getAttribute("usuario");
+        Usuario usuario = new Usuario();
+        usuario = controladora.traerUsuario(idUsuario);
         
         Odontologo odon = new Odontologo();
         odon.setNombre(nombre);

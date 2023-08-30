@@ -42,15 +42,20 @@
                     <input type="date" class="form-control form-control-user mb-3" id="fechaNac"
                            name="fecha_nac" placeholder="Fecha de nacimiento" checked="">
                 </div>
+                
                 <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user mb-3" id="idUsuario"
+                           name="idHorario" placeholder="Id. Usuario" checked="">
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user mb-3" id="idHorario"
+                           name="idUsuario" placeholder="Id. Horario" checked="">
+                </div>
+                <div class="col-sm-12">
                     <input type="text" class="form-control form-control-user mb-3" id="especialidad"
                            name="especialidad" placeholder="Especialidad" checked="">
                 </div>
                 
-                <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user mb-3" id="idHorario"
-                           name="idHorario" placeholder="Id. Horario" checked="">
-                </div>
                 <hr>
                 <div class="col-sm-6 text-center mt-3">
                     <button type="button" class="btn btn-primary w-75 mb-2" data-toggle="modal" data-target="#exampleModalCenter">
