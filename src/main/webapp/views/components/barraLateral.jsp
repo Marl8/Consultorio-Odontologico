@@ -101,8 +101,8 @@
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Acciones:</h6>
-                        <a class="collapse-item" href="">Solicitar Turnos</a>
-                        <a class="collapse-item" href="">Mis Turnos</a>
+                        <a class="collapse-item" href="altaTurnos.jsp">Solicitar Turnos</a>
+                        <a class="collapse-item" href="">Lista Turnos</a>
                     </div>
                 </div>
             </li>
